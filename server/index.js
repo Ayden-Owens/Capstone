@@ -2,8 +2,12 @@ const express = require("express")
 const cors = require("cors")
 const session = require("express-session")
 const db = require('./models')
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 const app = express()
+const PORT = process.env.PORT || 3001
 
 app.use(express.json())
 app.use(cors({
@@ -14,7 +18,7 @@ app.use(cors({
 
 app.use(session({
     key: "userId",
-    secret: "subscribe",
+    secret: process.env.SESSION_SECRET || "subscribe",
     resave: false,
     saveUninitialized: false, 
     cookie: {
@@ -30,7 +34,7 @@ const recipeRouter = require('./routes/Recipe.js')
 app.use('/recipe', recipeRouter)
 
 db.sequelize.sync().then(() => {
-    app.listen(3001, () => {
+    app.listen(PORT, () => {
         console.log("Server is running")
     })
 })
