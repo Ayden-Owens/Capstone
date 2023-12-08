@@ -31,6 +31,10 @@ app.use('/recipe', recipeRouter)
 
 var PORT = process.env.PORT || 3000
 
+app.get('/', (req, res) => {
+    res.send('Hello, World!')
+})
+
 db.sequelize.sync().then(() => {
     app.listen(PORT, () => {
         console.log("Server is running")
