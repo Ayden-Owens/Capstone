@@ -13,7 +13,7 @@ const Profile = () => {
   // Fetch email and username
   useEffect(() => {
     const authToken = Cookies.get('userToken');
-    Axios.get('http://localhost:3001/users/profile', {
+    Axios.get('https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/profile', {
       withCredentials: true,
       headers: {
         Authorization: `Bearer ${authToken}`,
@@ -32,7 +32,7 @@ const Profile = () => {
   const fetchSavedIngredients = useCallback(async () => {
     try {
       const response = await Axios.get(
-        'http://localhost:3001/users/saved_ingredients',
+        'https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/saved_ingredients',
         {
           withCredentials: true,
           headers: {
@@ -70,7 +70,7 @@ const Profile = () => {
       }
 
       const response = await Axios.post(
-        'http://localhost:3001/users/profile_ingredient_list',
+        'https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/profile_ingredient_list',
         {
           name: trimmedIngredientName,
           quantity: ingredientQuantity,
@@ -99,7 +99,7 @@ const Profile = () => {
   const handleDeleteIngredient = async (ingredientName) => {
     try {
       const response = await Axios.delete(
-        'http://localhost:3001/users/delete_ingredient',
+        'https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/delete_ingredient',
         {
           withCredentials: true,
           headers: {

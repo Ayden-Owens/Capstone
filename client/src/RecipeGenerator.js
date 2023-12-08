@@ -13,7 +13,7 @@ export const RecipeGenerator = () => {
     const fetchData = async () => {
         try {
             
-            const responseData = await Axios.get("http://localhost:3001/recipe/recipesIngredient",
+            const responseData = await Axios.get("https://capstonewebapp-a60f1bedd13c.herokuapp.com/recipe/recipesIngredient",
             {
               withCredentials: true,
               headers: {
