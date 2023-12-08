@@ -19,7 +19,7 @@ export const SearchBar = ({ setResults }) => {
     // ============== Function to fetch data from an API based on the input value ============== 
     const fetchData = async (value) => {
         
-        const response = await Axios.post("${API_BASE_URL}/recipe/recipesAllergy",
+        const response = await Axios.post("/recipe/recipesAllergy",
         {
           search: value,
         },
