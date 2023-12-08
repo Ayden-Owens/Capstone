@@ -29,8 +29,10 @@ app.use('/users', userRouter)
 const recipeRouter = require('./routes/Recipe.js')
 app.use('/recipe', recipeRouter)
 
+var PORT = process.env.PORT || 3000
+
 db.sequelize.sync().then(() => {
-    app.listen(3001, () => {
+    app.listen(PORT, () => {
         console.log("Server is running")
     })
 })

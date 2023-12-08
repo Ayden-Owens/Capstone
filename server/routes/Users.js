@@ -103,12 +103,8 @@ router.get('/profile', authenticate, async (req, res) => {
 });
 
 router.post('/profile_ingredient_list', authenticate, async (req, res) => {
-    console.log('hit post ingredient_list route')
-    console.log('Request payload:', req.body)
     try {
       const { name, quantity } = req.body;
-
-    //   console.log('req.body' + name + quantity)
 
         // check if user's ingredient name is in the Ingredient table 
       const ingredient = await Ingredient.findOne({
@@ -142,7 +138,7 @@ router.post('/profile_ingredient_list', authenticate, async (req, res) => {
 
       // handle case if the user profile already has the ingrendient 
       if (!created) {
-        //console.log('User already has this ingredient!')
+        
         await userProfile.update({ quantity: quantity })
       }
 
@@ -155,7 +151,7 @@ router.post('/profile_ingredient_list', authenticate, async (req, res) => {
 })
 
 router.get('/saved_ingredients', authenticate, async (req, res) => {
-    console.log('hit get_ingredient_list route');
+    
     
     try {
         const userProfile = await FridgeIngredient.findAll({
@@ -187,11 +183,10 @@ router.get('/saved_ingredients', authenticate, async (req, res) => {
 })
 
 router.delete('/delete_ingredient', authenticate, async (req,res) => {
-    console.log('hit the delete route')
+    
     try {
         const { name } = req.body
 
-        console.log('Deleting ingredient with name:', name)
 
         const ingredient = await Ingredient.findOne({
             where: {
@@ -214,7 +209,7 @@ router.delete('/delete_ingredient', authenticate, async (req,res) => {
         })
 
         if (deletedRows > 0){
-            console.log('Ingredient deleted successfully from Fridge.')
+            
             const updatedUserProfile = await FridgeIngredient.findAll({
                 where: { user_id: req.userId },
                 include: [
@@ -248,17 +243,17 @@ router.delete('/delete_ingredient', authenticate, async (req,res) => {
 
 router.post('/dietary_restrictions', authenticate, async (req, res) => {
     try{
-        console.log('hit diet route')
+        
         const userId = req.userId
-        console.log('userId: => ', userId)
+        
         const { selectedRestrictions } = req.body
-        console.log('selectedRestrictions: => ', selectedRestrictions)
+        
 
         const healthLabelIds = Array.isArray(selectedRestrictions)
             ? selectedRestrictions
             : [selectedRestrictions]
         
-        console.log(healthLabelIds)
+        
 
         await DietaryRestrictions.destroy({
             where: { user_id: userId },
@@ -269,7 +264,7 @@ router.post('/dietary_restrictions', authenticate, async (req, res) => {
                 user_id: userId,
                 healthLabel_id: healthLabelId,
             })
-            console.log(`Dietary restriction created for healthLabelId ${healthLabelId}.`)
+            
         }
        
         res.status(200).json({ message: 'Dietary restrictions saved successfully' })
@@ -300,7 +295,7 @@ router.get('/user_healthlabels', authenticate, async (req, res) => {
 
         res.status(200).json({ userHealthLabels: labelValues })
 
-        // console.log(labelValues)
+        
     }
     catch (error){
         console.error(error)
@@ -310,7 +305,7 @@ router.get('/user_healthlabels', authenticate, async (req, res) => {
 
 router.get('/healthlabels_ids', async (req, res) => {
     try{
-        // console.log('het get health ids')
+        
         const { selectedRestrictions } = req.query
 
         const healthLabels = await HealthLabel.findAll({
@@ -329,7 +324,7 @@ router.get('/healthlabels_ids', async (req, res) => {
 })
 
 router.get('/healthlabels', async(req, res) => {
-    console.log('hit get dietaryRestrictions route')
+    
     try {
 
         // get all the labels send to frontend for checklist 

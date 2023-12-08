@@ -95,7 +95,6 @@ router.get('/recipesIngredient', authenticate, async (req, res) => {
 
 router.post('/recipesAllergy', authenticate, async (req, res) => {
   try {
-    console.log("START IS HERE AND IS BIG:");
     const userId = req.userId;
     console.log(userId);
     // Getting the Data
@@ -118,19 +117,13 @@ router.post('/recipesAllergy', authenticate, async (req, res) => {
     let matchOnce = false;
     const matchingRecipes = [];
     for(let i = 0; i < recipeHealthLabels.length; i++) {
-      //console.log("Hello");
+
       for(let k = 0; k < healthLabelList.length; k++) {
-        // console.log(recipeHealthLabels[j]);
+
         for(let j = 0; j < recipeHealthLabels[i].HealthLabels.length; j++) {
-          // console.log("Recipes Matching: ");
-          // console.log(recipeHealthLabels[i].HealthLabels[j].dataValues.RecipeHealthLabels.dataValues.healthLabel_id);
-          // console.log(healthLabelList[k].healthLabel_id);
+
           if(recipeHealthLabels[i].HealthLabels[j].dataValues.RecipeHealthLabels.dataValues.healthLabel_id == healthLabelList[k].healthLabel_id) {
-            // console.log("Recipes Matching: ");
-            // console.log(recipeHealthLabels[i].dataValues.title);
-            // console.log("Recipes Matching: ");
-            // console.log(recipeHealthLabels[i].HealthLabels[j].dataValues.RecipeHealthLabels.dataValues.healthLabel_id);
-            // console.log(healthLabelList[k].healthLabel_id);
+
             matchingRecipes.push(recipeHealthLabels[i].dataValues.title);
             matchOnce = true;
             break;
