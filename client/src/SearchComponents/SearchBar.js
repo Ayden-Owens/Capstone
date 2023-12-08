@@ -32,7 +32,7 @@ export const SearchBar = ({ setResults }) => {
       
         //console.log(response);
         //results.map((response) => { response.title } )
-        setResults(response.data);
+        setResults(response)
     };
 
     // Function to handle changes in the input value
