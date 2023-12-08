@@ -9,8 +9,6 @@ const bcrypt = require("bcryptjs")
 
 router.post('/recipes', async (req, res) => {
   try {
-    console.log("START IS HERE AND IS BIG:");
-    console.log(req.userId);
     // Getting the Data
     const recipe_name = await Recipe.findAll({
       attributes: ['id', 'title'],
@@ -93,7 +91,7 @@ router.get('/recipesIngredient', authenticate, async (req, res) => {
 
 })
 
-router.post('/recipesAllergy', authenticate, async (req, res) => {
+router.post('/allergy', authenticate, async (req, res) => {
   try {
     const userId = req.userId;
     console.log(userId);
