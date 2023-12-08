@@ -14,10 +14,12 @@ export const SearchBar = ({ setResults }) => {
     // State to manage the input value
     const [input, setInput] = useState("");
 
+    const API_BASE_URL = "https://capstonewebapp-a60f1bedd13c.herokuapp.com"
+
     // ============== Function to fetch data from an API based on the input value ============== 
     const fetchData = async (value) => {
         
-        const response = await Axios.post("https://capstonewebapp-a60f1bedd13c.herokuapp.com/recipe/recipesAllergy",
+        const response = await Axios.post("${API_BASE_URL}/recipe/recipesAllergy",
         {
           search: value,
         },
