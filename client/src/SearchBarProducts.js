@@ -12,7 +12,9 @@ const SearchBar = ({ onSearchResults }) => {
         return;
       }
 
-      const response = await axios.get(`${process.env.PUBLIC_URL}/Products/${searchTerm.toLowerCase()}_prices.json`);
+      const formattedSearchTerm = searchTerm.trim().replace(/\s+/g, '_')
+
+      const response = await axios.get(`${process.env.PUBLIC_URL}/Products/${formattedSearchTerm.toLowerCase()}_prices.json`);
       const data = response.data.data; // Adjust the structure based on your JSON format
 
       onSearchResults(data);
