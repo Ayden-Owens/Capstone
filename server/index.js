@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const session = require("express-session")
 const db = require('./models')
+const path = require("path")
 
 const app = express()
 
@@ -31,8 +32,12 @@ app.use('/recipe', recipeRouter)
 
 var PORT = process.env.PORT || 3000
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')))
+
+// Handle requests to the root path by sending the React app's index.html
 app.get('/', (req, res) => {
-    res.send('Hello, World!')
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 })
 
 db.sequelize.sync().then(() => {
