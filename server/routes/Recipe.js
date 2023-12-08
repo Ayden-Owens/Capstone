@@ -3,7 +3,7 @@ const router = express.Router();
 const { Users, Recipe, Recipe_Ingredient, Ingredient, FridgeIngredient, DietaryRestrictions, DietaryRestriction, HealthLabel, Sequelize } = require('../models');
 const jwt = require('jsonwebtoken')
 const authenticate = require('../middlewares/authenticate')
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 
 
 
