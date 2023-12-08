@@ -91,7 +91,7 @@ router.get('/recipesIngredient', authenticate, async (req, res) => {
 
 })
 
-router.post('/allergy', authenticate, async (req, res) => {
+router.get('/allergy', authenticate, async (req, res) => {
   try {
     const userId = req.userId;
     console.log(userId);
