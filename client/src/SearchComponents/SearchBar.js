@@ -19,11 +19,10 @@ export const SearchBar = ({ setResults }) => {
     // ============== Function to fetch data from an API based on the input value ============== 
     const fetchData = async (value) => {
         
-        const response = await Axios.post("https://capstonewebapp-a60f1bedd13c.herokuapp.com/recipe/allergy",
+        const response = await Axios.get("https://capstonewebapp-a60f1bedd13c.herokuapp.com/recipe/allergy",
         {
-          search: value,
-        },
-        {
+          params: {
+          },
           withCredentials: true,
           headers: {
             Authorization: `Bearer ${Cookies.get('userToken')}`,
@@ -33,7 +32,7 @@ export const SearchBar = ({ setResults }) => {
       
         //console.log(response);
         //results.map((response) => { response.title } )
-        setResults(response);
+        setResults(response.data);
     };
 
     // Function to handle changes in the input value
