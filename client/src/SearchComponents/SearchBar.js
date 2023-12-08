@@ -19,7 +19,7 @@ export const SearchBar = ({ setResults }) => {
     // ============== Function to fetch data from an API based on the input value ============== 
     const fetchData = async (value) => {
         
-        const response = await Axios.post("/recipe/recipesAllergy",
+        const response = await Axios.post("https://capstonewebapp-a60f1bedd13c.herokuapp.com/recipe/recipesAllergy",
         {
           search: value,
         },
