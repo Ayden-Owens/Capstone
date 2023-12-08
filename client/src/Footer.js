@@ -1,7 +1,7 @@
 //import "./Header.css";
-import PriceComp from "./Comparer";
+import PriceComparer from "./PriceComparer";
 import Profile from "./Profile";
-import Recipes from "./Recipes";
+import RecipeGenerator from "./RecipeGenerator";
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 

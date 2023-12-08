@@ -6,12 +6,12 @@ import Login from './Login'
 import Profile from './Profile'
 import FrontPage from './FrontPage';
 import Register from './Register';
-import Header from './Header';
-import Footer from './Footer';
-import Recipes from './Recipes';
-import PriceComp from './Comparer';
-import Contact from './Contact';
-import About from './About';
+import Header from './Header'
+import Footer from './Footer'
+import RecipeGenerator from './RecipeGenerator'
+import PriceComp from './PriceComparer'
+import Contact from './Contact'
+import About from './About'
 import DietaryRestrictions from './DietaryRestrictions'
 //npm install react-router-dom
 
@@ -24,8 +24,8 @@ function App() {
           <Route path="/register" Component={Register}/>
           <Route path="/" Component={FrontPage}/>
           <Route path="/home" Component={Home}/>
-          <Route path="/recipes" Component={Recipes}/>
-          <Route path="/pricecompare" Component={PriceComp}/>
+          <Route path="/RecipeGenerator" Component={RecipeGenerator}/>
+          <Route path="/PriceComparer" Component={PriceComp}/>
           <Route path="/profile" Component={Profile}/>
           <Route path="/contactus" Component={Contact}/>
           <Route path="/about" Component={About}/>

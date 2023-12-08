@@ -1,7 +1,7 @@
 import "./Header.css";
-import PriceComp from "./Comparer";
+import PriceComparer from "./PriceComparer";
 import Profile from "./Profile";
-import Recipes from "./Recipes";
+import RecipeGenerator from "./RecipeGenerator";
 import Dietary from "./DietaryRestrictions";
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -18,7 +18,7 @@ return (
 
 function Recipe() {
 return (
-    <Link to="/recipes">
+    <Link to="/RecipeGenerator">
     <button style={{fontFamily: 'cursive',fontSize: '25px'}}>
         Recipe Generator
     </button>
@@ -27,7 +27,7 @@ return (
 }
 function Price() {
 return (
-    <Link to="/pricecompare">
+    <Link to="/PriceComparer">
     <button style={{fontFamily: 'cursive',fontSize: '25px'}}>
         Price Comparator
     </button>
