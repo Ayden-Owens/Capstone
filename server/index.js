@@ -8,7 +8,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3001"],
     methods: ["GET", "POST", "DELETE"],
     credentials: true
 }))
@@ -32,16 +32,16 @@ app.use('/recipe', recipeRouter)
 
 var PORT = process.env.PORT || 3000
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/build')))
+// // Serve static files from the React app
+// app.use(express.static(path.join(__dirname, '../client/build')))
 
-// Handle requests to the root path by sending the React app's index.html
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-})
+// // Handle requests to the root path by sending the React app's index.html
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+// })
 
 db.sequelize.sync().then(() => {
     app.listen(PORT, () => {
-        console.log("Server is running")
+        console.log("Server is running " + PORT)
     })
 })
