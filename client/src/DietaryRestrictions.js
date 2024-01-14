@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 import Cookies from 'js-cookie'
+import Header from './Header'
+import Footer from './Footer'
 
 const DietaryRestrictions = () => {
   const [healthLabels, setHealthLabels] = useState([])
@@ -9,7 +11,7 @@ const DietaryRestrictions = () => {
 
   useEffect(() => {
     // Fetch health labels from the server
-    Axios.get('http://localhost:3001/users/healthlabels')
+    Axios.get('https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/healthlabels')
       .then((response) => {
         setHealthLabels(response.data.labels)
       })
@@ -35,7 +37,7 @@ const DietaryRestrictions = () => {
 
         // Fetch the healthLabel_ids corresponding to the selected health labels
         const response = await Axios.get(
-            'http://localhost:3001/users/healthlabels_ids',
+            'https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/healthlabels_ids',
             {
                 params: { selectedRestrictions: selectedRestrictions.join(',') },
                 withCredentials: true,
@@ -50,7 +52,7 @@ const DietaryRestrictions = () => {
         console.log(healthLabelIds)
 
         await Axios.post(
-            'http://localhost:3001/users/dietary_restrictions',
+            'https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/dietary_restrictions',
             { selectedRestrictions: healthLabelIds },
             {
               withCredentials: true,
@@ -71,7 +73,7 @@ const DietaryRestrictions = () => {
 
   useEffect(() => {
        // Fetch user's saved dietary restrictions
-       Axios.get('http://localhost:3001/users/user_healthlabels', {
+       Axios.get('https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/user_healthlabels', {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${Cookies.get('userToken')}`
@@ -90,6 +92,7 @@ const DietaryRestrictions = () => {
 
   return (
     <div>
+        <Header/>
       <h1>Dietary Restrictions</h1>
       <form>
         <h3>Select your dietary restrictions:</h3>
@@ -119,6 +122,7 @@ const DietaryRestrictions = () => {
       </ul>
 
       </div>
+      <Footer/>
     </div>
   ) 
 } 

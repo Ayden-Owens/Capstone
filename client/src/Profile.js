@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
+import Header from './Header';
+import Footer from './Footer';
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
@@ -8,10 +10,12 @@ const Profile = () => {
   const [ingredientName, setIngredientName] = useState('');
   const [ingredientQuantity, setIngredientQuantity] = useState('');
 
+  const API = 'http://localhost:3000'
+
   // Fetch email and username
   useEffect(() => {
     const authToken = Cookies.get('userToken');
-    Axios.get('http://localhost:3001/users/profile', {
+    Axios.get(API+'/users/profile', {
       withCredentials: true,
       headers: {
         Authorization: `Bearer ${authToken}`,
@@ -30,7 +34,7 @@ const Profile = () => {
   const fetchSavedIngredients = useCallback(async () => {
     try {
       const response = await Axios.get(
-        'http://localhost:3001/users/saved_ingredients',
+        API+'/users/saved_ingredients',
         {
           withCredentials: true,
           headers: {
@@ -68,7 +72,7 @@ const Profile = () => {
       }
 
       const response = await Axios.post(
-        'http://localhost:3001/users/profile_ingredient_list',
+        API+'/users/profile_ingredient_list',
         {
           name: trimmedIngredientName,
           quantity: ingredientQuantity,
@@ -97,7 +101,7 @@ const Profile = () => {
   const handleDeleteIngredient = async (ingredientName) => {
     try {
       const response = await Axios.delete(
-        'http://localhost:3001/users/delete_ingredient',
+        API+'/users/delete_ingredient',
         {
           withCredentials: true,
           headers: {
@@ -116,6 +120,7 @@ const Profile = () => {
 
   return (
     <div>
+      <Header/>
       <h1>Profile Page</h1>
       <div className='Account Information'>
         <h2>Username: {username}</h2>
@@ -153,6 +158,7 @@ const Profile = () => {
             ))}
         </ul>
       </div>
+      <Footer/>
     </div>
   );
 };

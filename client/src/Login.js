@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import Axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
+import './Login.css'
 
 
 const Login = () => {
@@ -11,14 +12,61 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const carousel = document.querySelector('.carousel');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const carouselButtons = document.querySelectorAll('.carousel_button');
+    
+        let currentIndex = 0;
+    
+        function showItem(index) {
+          carouselItems.forEach((item, i) => {
+            item.style.display = i === index ? 'block' : 'none';
+          });
+        }
+    
+        function updateCarousel() {
+          carouselButtons.forEach((button, i) => {
+            button.addEventListener('click', () => {
+              currentIndex = i;
+              showItem(currentIndex);
+              updateButtonStyles();
+            });
+          });
+        }
+    
+        function updateButtonStyles() {
+          carouselButtons.forEach((button, i) => {
+            button.classList.toggle('carousel_button--selected', i === currentIndex);
+          });
+        }
+    
+        function startCarousel() {
+          setInterval(() => {
+            currentIndex = (currentIndex + 1) % carouselItems.length;
+            showItem(currentIndex);
+            updateButtonStyles();
+          }, 3000); // Adjust the interval for the desired speed (in milliseconds)
+        }
+    
+        showItem(currentIndex);
+        updateCarousel();
+        startCarousel();
+    }, [])
+
     const handleLogin = async () => {
+
+        // const API_BASE_URL = 'https://www.whattocook.cc'
+        const API = "http://localhost:3000"
+    
+
         if (!usernameLog || !passwordLog) {
             setLoginStatus("Please enter both username and password")
             return
         }
 
         try {
-            const response = await Axios.post("http://localhost:3001/users/login", {
+            const response = await Axios.post(API+"/users/login", {
                 username: usernameLog,
                 password: passwordLog,
             }, { withCredentials: true })
@@ -34,10 +82,13 @@ const Login = () => {
             navigate('/Home')
         } 
         catch (error){
-            console.error(error);
-            setLoginStatus("Error during login");
-        };
+            console.error(error)
+            setLoginStatus("Error during login")
+        }
+
     }
+
+    
 
     // useEffect(()=> {
     //     Axios.get("http://localhost:3001/users/check-login")
@@ -53,35 +104,60 @@ const Login = () => {
     // }, [])
 
     return (
-        <div className="login" style={{textAlign:'center',fontFamily:'cursive',}}>
-            <h1>Login</h1>
-            <input 
-                type="text" 
-                placeholder="Username ..."
-                onChange={(e) => {
-                    setUsernameLog(e.target.value);
-                }}
-            />
-            <input 
-                type="password" 
-                placeholder="Password ..."
-                onChange={(e) => {
-                    setPasswordLog(e.target.value);
-                }}
-            />
-            <button onClick={handleLogin}>Login</button>
-            {/* <div>
-                <Link to="/register">Register</Link>
-            </div> */}
-            <div> 
-                <Link to="/register">
-                    <button style={{fontFamily: 'cursive'}}>
-                        Register
-                    </button>
-                </Link>
-            </div>
-            <p className="message">{loginStatus}</p>
-        </div>       
+        <body>
+            <div class='container'>
+                <div class='carousel'>
+                    <div class='carousel-item'>
+                        <img src="/images/login1.png" alt=""/>
+                        <div class="carousel-text">Enter your ingredients</div>
+                    </div>
+                    <div class='carousel-item'>
+                        <img src="/images/login2.png" alt=""/>
+                        <div class="carousel-text">Find a recipe and start cooking</div>
+                    </div>
+                    <div class='carousel-item'>
+                        <img src="/images/login3.png" alt=""/>
+                        <div class="carousel-text">Then start eating your delicious meal</div>
+                    </div>
+                    <div class='carousel_nav'>
+                        <span class='carousel_button'></span>
+                        <span class='carousel_button'></span>
+                        <span class='carousel_button'></span>
+                    </div>
+                </div>
+
+                <div class="login">
+                    <h1>WhatToCook</h1>
+                    <h2>Welcome to WhatToCook</h2>
+                    <label for="username" class="username-label">Username:</label>
+                        <input 
+                            type="text"
+                            id="username" 
+                            placeholder="Enter your username ..."
+                            onChange={(e) => {
+                                setUsernameLog(e.target.value);
+                            }}
+                        />
+                    <label for="password" class="password-label">Password:</label>
+                        <input 
+                            type="password" 
+                            id="password"
+                            placeholder="Enter your password ..."
+                            onChange={(e) => {
+                                setPasswordLog(e.target.value);
+                            }}
+                        />
+                    <button onClick={handleLogin}>Login</button>
+                    <label for="or">OR</label>
+                    <div class="register"> 
+                        <Link to="/register">
+                            <button> Sign Up </button>
+                        </Link>
+                    </div>
+                    <p className="message">{loginStatus}</p>
+                </div>      
+            </div> 
+        </body>
     )
 }
 
