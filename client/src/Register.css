@@ -67,7 +67,7 @@ body {
     background: rgba(255, 255, 255, 1);
 }
 
-.login {
+.registration {
     flex: 1;
     background: white;
     padding: 20px;
@@ -85,16 +85,15 @@ input {
     margin-left: 100px;
     margin-right: auto;
     margin-bottom: 20px;
-    
 }
 
-.login h1 {
+.registration h1 {
     font-family: 'Brush Script MT', 'Brush Script Std', cursive;
     font-weight: 400;
     font-size: 4em;
 }
 
-.login h2 {
+.registration h2 {
     font-family: 'Brush Script Std';
     color: gray;
     font-weight: 80;
@@ -121,7 +120,13 @@ label {
     font-size: 1.25em;
 }
 
-button {
+.email-label {
+    text-align: left;
+    margin-left: 100px;
+    font-size: 1.25em;
+}
+
+.register-button {
     background: black;
     color: white;
     border: none;
@@ -129,24 +134,13 @@ button {
     font-family: 'Brush Script MT', 'Brush Script Std', cursive;
     width: 150px;
     height: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 1.5rem;  
 }
 
-.register {
-    text-align: center;
-    color: #666;
+.error-message {
+    color: red;
+    font-size: 1.5em;
+    margin-top: -20px;
+    font-weight: bold;
 }
-
-.register button {
-    background: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
-    width: 150px;
-    height: 40px;  
-    font-size: 1.5rem;  
-}
-
-

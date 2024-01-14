@@ -1,77 +1,34 @@
-import "./Header.css";
-import PriceComparer from "./PriceComparer";
-import Profile from "./Profile";
-import RecipeGenerator from "./RecipeGenerator";
-import Dietary from "./DietaryRestrictions";
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import "./Header.css"
+// import React from 'react'
+// import { Link } from 'react-router-dom'
 
-function Home() {
-return (
-    <a href="/home">
-    <button style={{fontFamily: 'cursive',fontSize: '25px'}}>
-        Home
-    </button>
-    </a>
-    );
-}
+// function Header() {
 
-function Recipe() {
-return (
-    <Link to="/RecipeGenerator">
-    <button style={{fontFamily: 'cursive',fontSize: '25px'}}>
-        Recipe Generator
-    </button>
-    </Link>
-    );
-}
-function Price() {
-return (
-    <Link to="/PriceComparer">
-    <button style={{fontFamily: 'cursive',fontSize: '25px'}}>
-        Price Comparator
-    </button>
-    </Link>
-    );
-}
-function Prof() {
-return (
-    <Link to="/profile">
-    <button style={{fontFamily: 'cursive',fontSize: '25px'}}>
-        Profile
-    </button>
-    </Link>
-    );
-}
-function Diet() {
-  return (
-    <Link to="/dietary">
-      <button style={{ fontFamily: "cursive", fontSize: "25px" }}>
-        DietaryRestrictions
-      </button>
-    </Link>
-  );
-}
+//     return (
+//       <header>
+//         <nav className="navbar">
+//           <label className="title">WhatToCook</label>
+//           <ul>
+//             <a href="/home">
+//               <button className="home">Home</button>
+//             </a>
+//             <Link to="/RecipeGenerator">
+//               <button className="recipe">Recipe Generator</button>
+//             </Link>
+//             <Link to="/PriceComparer">
+//               <button className="price">Price Comparator</button>
+//             </Link>
+//             <Link to="/dietary">
+//               <button className="diet">Dietary Restrictions</button>
+//             </Link>
+//             <Link to="/profile">
+//               <button className="profile">Profile</button>
+//             </Link>
+//           </ul>
+//         </nav> 
+//       </header>
+//     )
+//   }
 
-function Header() {
-    return (
-      <header style={{background: 'lemonchiffon',fontFamily:'cursive',}} className="header">
-        <nav>
-          <ul className="right">
-            <div style={{fontFamily:'cursive', fontSize: '30px'}} className="left">WhatToCook</div>
-            <Home/>
-            <Recipe/>
-            <Price/>
-            <Diet/>
-            <Prof/>
-          </ul>
-        </nav> 
-        <ul style={{color: 'lemonchiffon', fontSize: '15px'}}>
-          Space
-        </ul>
-      </header>
-    );
-  }
-
-export default Header;
+// export default Header;
   

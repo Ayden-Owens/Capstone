@@ -1,15 +1,16 @@
-//import "./Header.css";
+import "./Footer.css";
 import PriceComparer from "./PriceComparer";
 import Profile from "./Profile";
 import RecipeGenerator from "./RecipeGenerator";
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 function ContactUs() {
 return (
     <a href="/contactus">
-    <button style={{fontFamily: 'cursive',fontSize: '25px'}}>
-        Contact Us
+    <button>
+      Contact Us
     </button>
     </a>
     );
@@ -18,8 +19,8 @@ return (
 function About() {
 return (
     <Link to="/about">
-    <button style={{fontFamily: 'cursive',fontSize: '25px'}}>
-        About
+    <button>
+      About Us
     </button>
     </Link>
     );
@@ -27,19 +28,25 @@ return (
 
 function Footer() {
     return (
-      <header style={{background: 'sienna'}} className="header">
-        <nav>
-          <ul className="right">
-            <div style={{fontFamily:'cursive', fontSize: '30px'}} className="left">WhatToCook</div>
-            <ContactUs/>
-            <About/>
-          </ul>
-        </nav> 
-        <ul style={{color: 'sienna ', fontSize: '15px'}}>
-          Space
-        </ul>
-      </header>
-    );
+      <div className='footer'>
+          <label className="foot-title">WhatToCook</label>
+          <div className="company">
+            <label className="company-title">Company</label>
+            <ul className="company-links">
+              <li><About/></li>
+              <li><ContactUs/></li>
+            </ul>
+          </div>
+          <div className="Follow">
+            <label className="follow-title">Follow Us</label>
+            <ul className="follow-links">
+              <li>
+                <button>Instagram</button>
+              </li>
+            </ul>
+          </div>
+      </div>
+    )
   }
 
 export default Footer;
