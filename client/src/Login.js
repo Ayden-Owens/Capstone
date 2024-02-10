@@ -56,7 +56,7 @@ const Login = () => {
 
     const handleLogin = async () => {
 
-        const API = 'https://www.whattocook.cc'
+        const API = 'https://capstonewebapp-a60f1bedd13c.herokuapp.com'
         // const API = "http://localhost:3000"
     
 

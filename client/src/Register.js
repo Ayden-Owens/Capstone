@@ -11,7 +11,7 @@ const Register = () => {
     
     const handleRegistration = async () => {
       try {
-        const response = await Axios.post("https://www.whattocook.cc/users/register", {
+        const response = await Axios.post("https://capstonewebapp-a60f1bedd13c.herokuapp.com/users/register", {
           username: usernameReg,
           password: passwordReg,
           email: emailReg,
