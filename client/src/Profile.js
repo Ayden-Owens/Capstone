@@ -119,7 +119,6 @@ const Profile = () => {
   return (
     <div>
       <Header/>
-      <h1>Profile Page</h1>
       <div className='Account Information'>
         <h2>Username: {username}</h2>
         <h2>Email: {email}</h2>
