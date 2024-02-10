@@ -3,6 +3,7 @@ import Axios from 'axios';
 import Cookies from 'js-cookie';
 import Header from './Header';
 import Footer from './Footer';
+import "./Profile.css";
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
@@ -119,7 +120,7 @@ const Profile = () => {
   return (
     <div>
       <Header/>
-      <div className='Account Information'>
+      <div className='Account-Information'>
         <h2>Username: {username}</h2>
         <h2>Email: {email}</h2>
       </div>
@@ -149,7 +150,7 @@ const Profile = () => {
               <li key={index}>
                 {ingredient.name} - {ingredient.quantity}
                 <button onClick={() => handleDeleteIngredient(ingredient.name)}>
-                  Delete
+                  Delete Ingredient
                 </button>
               </li>
             ))}
